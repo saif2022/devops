@@ -21,6 +21,7 @@ namespace AWSLambdaProjectDotNet
         /// <returns></returns>
         public string FunctionHandler(string input, ILambdaContext context)
         {
+            Console.WriteLine("Hello Hi!!! V1");
             return input?.ToUpper();
         }
     }
