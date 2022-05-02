@@ -1,0 +1,13 @@
+﻿
+version: 0.0
+Resources:
+  - MyFunction: 
+      Type: AWS::Lambda::Function
+      Properties:
+        Code:
+          S3Bucket: https://artifact-lambda-project.s3.amazonaws.com/AWSLambdaProjectDeployment/AWSLambaProjectDotNet/bin/Release/netcoreapp3.1/AWSLambaProjectDotNet.zip
+        Description: Sample DotnetCore3.1 Lambda
+        Handler: AWSLambaProjectDotNet::AWSLambaProjectDotNet.Function::FunctionHandler
+        PackageType: Zip
+        Runtime: netcoreapp3.1
+        Timeout: 30
