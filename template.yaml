@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Demo Lambda Function
+Resources:
+  Function:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: AWSLambaProjectDotNet::AWSLambaProjectDotNet.Function::FunctionHandler
+      Role: arn:aws:iam::303352574757:role/lambda-role-assesment
+      Code:
+        S3Bucket: artifact-lambda-project
+        S3Key: AWSLambdaProjectDeployment/AWSLambaProjectDotNet/bin/Release/netcoreapp3.1/AWSLambaProjectDotNet.zip
+      Runtime: dotnetcore3.1
+      Timeout: 5
