@@ -1,0 +1,29 @@
+Description: CFN template to launch  a Debian EC2 instance for auto-scalling purpose
+
+Resources:
+  AutoScalingLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateName:  ASLaunchTemplate
+      LaunchTemplateData:
+        InstanceType: t2.micro
+        KeyName: assignment-key-pair
+
+  DebianInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-09a41e26df464c548
+      LaunchTemplate:
+        LaunchTemplateId: !Ref AutoScalingLaunchTemplate
+        Version: !GetAtt AutoScalingLaunchTemplate.LatestVersionNumber
+      Tags:
+        - Key: Name
+          Value: DebianInsByLT
+
+Outputs:
+  InstanceId:
+    Description: Instance ID
+    Export:
+      Name: Output-Debian-Instance-Id
+    Value: !Ref DebianInstance
+
